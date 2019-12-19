@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { SettingsService } from '../../services/settings.service';
+import { SettingsService } from '../../services/service.index';
+
 
 
 @Component({
@@ -16,6 +17,8 @@ export class AccoutSettingsComponent implements OnInit {
                public _ajustes: SettingsService) { }
 
   ngOnInit() {
+
+    this.colocarCheck();
   }
 
   cambiarColor( tema: string, link: ElementRef ) {
@@ -37,5 +40,23 @@ export class AccoutSettingsComponent implements OnInit {
     link.classList.add('working');
 
   }
+
+  colocarCheck() {
+
+    const selectores: any = document.getElementsByClassName('selector');
+
+    const tema = this._ajustes.ajustes.tema;
+
+    for ( const ref of selectores ) {
+      if( ref.getAttribute('data-theme') === tema ) {
+        ref.classList.add('working');
+        break;
+      }
+
+    }
+
+
+  }
+
 
 }
