@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
       let profile = googleUser.getBasicProfile();
       let token = googleUser.getAuthResponse().id_token;
-      this._usuarioService.logingGoogle( token )
+      this._usuarioService.loginGoogle( token )
             .subscribe( () => window.location.href = '#dashboard' );
     });
   }
@@ -67,14 +67,22 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    let usuario = new Usuario( null, forma.value.email, forma.value.password );
+    let usuario: Usuario = { nombre: null, email: 'test@test.com', password: '1234'};
+
+    new Usuario( null, forma.value.email, forma.value.password );
 
     this._usuarioService.login( usuario, forma.value.recuerdame )
                 .subscribe( correcto =>  this.router.navigate(['/dashboard']) );
 
+
+    /* this._usuarioService.login( usuario, forma.value.recuerdame )
+          .subscribe( resp => {
+            console.log( 'respuesta', resp );
+          });
+ */
     console.log( forma.valid);
     console.log( forma.value);
-   // this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard']);
   }
 
 }
