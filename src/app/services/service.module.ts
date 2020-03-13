@@ -8,6 +8,7 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
 
 
 
+
 import {
   SettingsService,
   SidebarService,
@@ -16,7 +17,8 @@ import {
   LoginGuardGuard,
   AdminGuard,
   HospitalService,
-  MedicoService
+  MedicoService,
+  VerificaTokenGuard
 } from './service.index';
 
 @NgModule({
@@ -31,7 +33,8 @@ import {
     SubirArchivoService,
     ModalUploadService,
     HospitalService,
-    MedicoService
+    MedicoService,
+    VerificaTokenGuard
   ],
   imports: [
     CommonModule,
